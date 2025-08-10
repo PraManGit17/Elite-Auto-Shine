@@ -18,19 +18,20 @@ const Navbar = () => {
           <div className='text-2xl font-semibold '>Elite Shine Auto</div>
         </div>
 
-        <div className='text-xl font-medium flex items-center gap-10'>
-          <div>Home</div>
+        <div className='text-lg flex items-center gap-10'>
+          <div>Brands</div>
           <div>Car Gallery</div>
           <div>Services</div>
           <div>Follow</div>
         </div>
 
 
-        <div className='flex items-center gap-4'>
+        {/* <div className='flex items-center gap-4'>
           <div className='p-4 border-2 bg-white rounded-full'>
           </div>
           <DotsThreeVertical className='text-white font-semibold' size={50} />
-        </div>
+        </div> */}
+        
       </div>
     </div>
   )
