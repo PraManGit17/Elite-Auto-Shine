@@ -6,7 +6,6 @@ import HeroSection from '@/components/HeroSection'
 const page = () => {
   return (
     <div>
-      <Navbar />
       <HeroSection />
     </div>
   )

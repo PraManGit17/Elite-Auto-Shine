@@ -11,7 +11,7 @@ import Image from "next/image";
 
 const CarModel = ({ file }) => {
 
-  const { scene } = useGLTF("/models/bmw3.glb");
+  const { scene } = useGLTF("/models/BMW/bmw3.glb");
   return <primitive object={scene} scale={1.1} position={[0, -0.5, -0.5]} />;
 };
 

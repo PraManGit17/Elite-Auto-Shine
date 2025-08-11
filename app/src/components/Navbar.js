@@ -18,20 +18,28 @@ const Navbar = () => {
           <div className='text-2xl font-semibold '>Elite Shine Auto</div>
         </div>
 
-        <div className='text-lg flex items-center gap-10'>
-          <div>Brands</div>
-          <div>Car Gallery</div>
-          <div>Services</div>
-          <div>Follow</div>
+        <div className="text-xl flex items-center text-gray-300 opacity-70 gap-10">
+          <div className="relative hover:scale-110 hover:text-white hover:mb-1 hover:cursor-pointer transition-all hover:font-medium hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.9)]
+                 ">
+            Brands
+          </div>
+
+          <div className="relative hover:scale-110 hover:text-white hover:mb-1 hover:cursor-pointer transition-all hover:font-medium hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.9)]
+                 ">
+            Car Gallery
+          </div>
+
+          <div className="relative hover:scale-110 hover:text-white hover:mb-1 hover:cursor-pointer transition-all hover:font-medium hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.9)]
+                 ">
+            Services
+          </div>
+
+          <div className="hover:scale-110 hover:text-white hover:mb-1 hover:cursor-pointer transition-all hover:font-medium hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.9)]">
+            Follow
+          </div>
         </div>
 
 
-        {/* <div className='flex items-center gap-4'>
-          <div className='p-4 border-2 bg-white rounded-full'>
-          </div>
-          <DotsThreeVertical className='text-white font-semibold' size={50} />
-        </div> */}
-        
       </div>
     </div>
   )
