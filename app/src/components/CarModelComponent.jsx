@@ -13,23 +13,22 @@ const Car = ({ src, maxSize }) => {
     new GLTFLoader().load(src, (gltf) => {
       const scene = gltf.scene;
 
-      // Get original size
+      
       const box = new THREE.Box3().setFromObject(scene);
       const size = new THREE.Vector3();
       box.getSize(size);
 
-      // Scale model relative to maxSize
+      
       const scaleFactor = maxSize / Math.max(size.x, size.y, size.z);
       scene.scale.set(scaleFactor, scaleFactor, scaleFactor);
 
-      // Slightly lift model up
+      
       scene.position.set(0, -0.2, 0);
 
       setModel(scene);
     });
   }, [src, maxSize]);
 
-  // Rotate continuously
   useFrame(() => {
     if (model) model.rotation.y += 0.01;
   });
