@@ -8,7 +8,6 @@ import Background from "@/components/Background";
 
 gsap.registerPlugin(ScrollTrigger);
 
-
 const Carousel = dynamic(() => import("@/components/CarouselComponent"), {
   ssr: false,
 });
@@ -25,6 +24,17 @@ const Page = () => {
   const bmwSectionRef = useRef(null);
   const jaguarSectionRef = useRef(null);
   const mercedesSectionRef = useRef(null);
+
+  // New refs for tagline and carousel container animation
+  const jaguarTaglineRef = useRef(null);
+  const jaguarCarouselRef = useRef(null);
+
+  const bmwTaglineRef = useRef(null);
+  const bmwCarouselRef = useRef(null);
+
+  const mercedesTaglineRef = useRef(null);
+  const mercedesCarouselRef = useRef(null);
+
   const [jaguarSlides, setJaguarSlides] = useState([]);
   const [bmwSlides, setBmwSlides] = useState([]);
   const [mercedesSlides, setMercedesSlides] = useState([]);
@@ -85,7 +95,6 @@ const Page = () => {
           duration: 1,
           ease: "power2.out",
           onComplete: () => {
-
             setJaguarSlides([
               {
                 component: (
@@ -157,6 +166,7 @@ const Page = () => {
         }
       );
 
+    // Jaguar section animation + ScrollTrigger for tagline & carousel
     gsap.fromTo(
       jaguarSectionRef.current,
       { opacity: 0, y: 50 },
@@ -165,9 +175,28 @@ const Page = () => {
         y: 0,
         duration: 1,
         ease: "power2.out",
+        scrollTrigger: {
+          trigger: jaguarSectionRef.current,
+          start: "top 60%",
+          toggleActions: "play none none reverse",
+          onEnter: () => {
+
+            if (jaguarTaglineRef.current && jaguarCarouselRef.current) {
+              gsap.fromTo(
+                jaguarTaglineRef.current,
+                { opacity: 0, y: 20 },
+                { opacity: 1, y: 0, duration: 1, ease: "power2.out" }
+              );
+              gsap.fromTo(
+                jaguarCarouselRef.current,
+                { opacity: 0, scale: 0.95 },
+                { opacity: 1, scale: 1, duration: 1, ease: "power2.out", delay: 0.3 }
+              );
+            }
+          },
+        },
       }
     );
-
 
     gsap.fromTo(
       bmwSectionRef.current,
@@ -179,7 +208,8 @@ const Page = () => {
         ease: "power2.out",
         scrollTrigger: {
           trigger: bmwSectionRef.current,
-          start: "top 60%",
+          start: "top 40%",
+          end: "bottom 30%",
           toggleActions: "play none none reverse",
           onEnter: () => {
             setBmwSlides([
@@ -249,11 +279,25 @@ const Page = () => {
                 torque: "365 Nm",
               },
             ]);
+
+            setTimeout(() => {
+              if (bmwTaglineRef.current && bmwCarouselRef.current) {
+                gsap.fromTo(
+                  bmwTaglineRef.current,
+                  { opacity: 0, y: 20 },
+                  { opacity: 1, y: 0, duration: 1, ease: "power2.out" }
+                );
+                gsap.fromTo(
+                  bmwCarouselRef.current,
+                  { opacity: 0, scale: 0.95 },
+                  { opacity: 1, scale: 1, duration: 1, ease: "power2.out", delay: 0.3 }
+                );
+              }
+            }, 50);
           },
         },
       }
     );
-
 
     gsap.fromTo(
       mercedesSectionRef.current,
@@ -265,7 +309,8 @@ const Page = () => {
         ease: "power2.out",
         scrollTrigger: {
           trigger: mercedesSectionRef.current,
-          start: "top 60%",
+          start: "top 40%",
+          end: "bottom 30%",
           toggleActions: "play none none reverse",
           onEnter: () => {
             setMercedesSlides([
@@ -335,11 +380,25 @@ const Page = () => {
                 torque: "850 Nm",
               },
             ]);
+
+            setTimeout(() => {
+              if (mercedesTaglineRef.current && mercedesCarouselRef.current) {
+                gsap.fromTo(
+                  mercedesTaglineRef.current,
+                  { opacity: 0, y: 20 },
+                  { opacity: 1, y: 0, duration: 1, ease: "power2.out" }
+                );
+                gsap.fromTo(
+                  mercedesCarouselRef.current,
+                  { opacity: 0, scale: 0.95 },
+                  { opacity: 1, scale: 1, duration: 1, ease: "power2.out", delay: 0.3 }
+                );
+              }
+            }, 100);
           },
         },
       }
     );
-
   }, []);
 
   return (
@@ -371,11 +430,14 @@ const Page = () => {
         >
           <div className="w-full h-full flex flex-col items-center justify-center gap-20">
             <div className="flex items-baseline gap-2 px-20 text-2xl md:text-4xl font-bold text-white tracking-wide cursor-pointer">
-              <span className="text-4xl md:text-5xl drop-shadow-[0_0_15px_rgba(255,255,255,0.9)]">
+              <span
+                className="text-4xl md:text-5xl drop-shadow-[0_0_15px_rgba(255,255,255,0.9)]"
+              // Jaguar brand title - no animation needed here
+              >
                 Jaguar
               </span>
               <span>-</span>
-              <span>
+              <span ref={jaguarTaglineRef}>
                 "Unleash the{" "}
                 <span className="drop-shadow-[0_0_8px_rgba(255,255,255,1)] opacity-60">
                   Art
@@ -383,12 +445,14 @@ const Page = () => {
                 of Performance"
               </span>
             </div>
-            <div className="h-full w-full flex items-center justify-center">
+            <div
+              className="h-full w-full flex items-center justify-center"
+              ref={jaguarCarouselRef}
+            >
               {jaguarSlides.length > 0 && <Carousel slides={jaguarSlides} />}
             </div>
           </div>
         </div>
-
 
         <div
           ref={bmwSectionRef}
@@ -396,11 +460,13 @@ const Page = () => {
         >
           <div className="w-full h-full flex flex-col items-center justify-center gap-20">
             <div className="flex items-baseline gap-2 px-20 text-2xl md:text-4xl font-bold text-white tracking-wide cursor-pointer">
-              <span className="text-4xl md:text-5xl drop-shadow-[0_0_15px_rgba(255,255,255,0.9)]">
+              <span
+                className="text-4xl md:text-5xl drop-shadow-[0_0_15px_rgba(255,255,255,0.9)]"
+              >
                 BMW
               </span>
               <span>-</span>
-              <span>
+              <span ref={bmwTaglineRef}>
                 "Sheer{" "}
                 <span className="drop-shadow-[0_0_8px_rgba(255,255,255,1)] opacity-60">
                   Driving
@@ -408,7 +474,10 @@ const Page = () => {
                 Pleasure"
               </span>
             </div>
-            <div className="h-full w-full flex items-center justify-center">
+            <div
+              className="h-full w-full flex items-center justify-center"
+              ref={bmwCarouselRef}
+            >
               {bmwSlides.length > 0 && <Carousel slides={bmwSlides} />}
             </div>
           </div>
@@ -420,25 +489,27 @@ const Page = () => {
         >
           <div className="w-full h-full flex flex-col items-center justify-center gap-20">
             <div className="flex items-baseline gap-2 px-20 text-2xl md:text-4xl font-bold text-white tracking-wide cursor-pointer">
-              <span className="text-4xl md:text-5xl drop-shadow-[0_0_15px_rgba(255,255,255,0.9)]">
+              <span
+                className="text-4xl md:text-5xl drop-shadow-[0_0_15px_rgba(255,255,255,0.9)]"
+              >
                 Mercedes-Benz
               </span>
               <span>-</span>
-              <span>
+              <span ref={mercedesTaglineRef}>
                 "The{" "}
                 <span className="drop-shadow-[0_0_8px_rgba(255,255,255,1)] opacity-60">
                   Best or Nothing
                 </span>"
               </span>
             </div>
-            <div className="h-full w-full flex items-center justify-center">
+            <div
+              className="h-full w-full flex items-center justify-center"
+              ref={mercedesCarouselRef}
+            >
               {mercedesSlides.length > 0 && <Carousel slides={mercedesSlides} />}
             </div>
           </div>
         </div>
-
-
-
       </div>
     </div>
   );
