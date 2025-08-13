@@ -21,14 +21,14 @@ const Page = () => {
   useEffect(() => {
     const tl = gsap.timeline();
 
-    // Title animation
+    
     tl.from(titleRef.current, {
       opacity: 0,
       y: -20,
       duration: 0.8,
       ease: "power3.out",
     })
-      // Subtitle animation
+    
       .from(
         subtitleRef.current,
         {
@@ -37,9 +37,9 @@ const Page = () => {
           duration: 0.6,
           ease: "power3.out",
         },
-        "-=0.4" // overlap slightly with title
+        "-=0.4" 
       )
-      // Cards animation
+      
       .from(
         cardsRef.current,
         {
@@ -52,7 +52,6 @@ const Page = () => {
         "-=0.2"
       );
 
-    // Hover animations
     cardsRef.current.forEach((card) => {
       card.addEventListener("mouseenter", () => {
         gsap.to(card, {

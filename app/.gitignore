@@ -40,3 +40,8 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# Ignore the entire "view" folder inside car-gallery
+src/app/car-gallery/view/
+
+# Ignore CarModelComponent.jsx inside components
+src/components/CarModelComponent.jsx

@@ -30,7 +30,7 @@ const Page = () => {
   const modelContainerRef = useRef(null)
 
   useEffect(() => {
-    
+
     const tl = gsap.timeline({ defaults: { ease: "power3.out" } })
 
     tl.fromTo(headingRef.current,
@@ -154,7 +154,13 @@ const Page = () => {
           <Suspense fallback={null}>
             <CarModel src={carModels[currentIndex].src} />
           </Suspense>
-          <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={3} />
+          <OrbitControls
+            enableZoom={false}
+            enablePan={false}
+            enableRotate={false} // disables manual rotation
+            autoRotate
+            autoRotateSpeed={3}
+          />
         </Canvas>
       </div>
     </div>
