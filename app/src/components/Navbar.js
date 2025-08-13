@@ -22,6 +22,7 @@ const Navbar = () => {
             { label: "Home", path: "/" },
             { label: "Car Gallery", path: "/car-gallery" },
             { label: "Services", path: "/services" },
+            { label: "Contact", path: "/contact" },
           ].map(({ label, path }) => (
             <div
               key={label}
@@ -33,7 +34,7 @@ const Navbar = () => {
             </div>
           ))}
 
-  
+
         </div>
       </div>
     </div>

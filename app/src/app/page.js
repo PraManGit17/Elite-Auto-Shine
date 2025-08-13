@@ -130,7 +130,7 @@ const Page = () => {
           Services
         </div>
         <div
-          onClick={() => router.push('/contact-form')}
+          onClick={() => router.push('/contact')}
           className="cursor-pointer transition-all duration-300 hover:scale-110 hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,225,225,0.6)]"
         >
           Contact
