@@ -115,7 +115,7 @@ const Page = () => {
           ease: "power2.out",
           scrollTrigger: {
             trigger: section.current,
-            start: "top 80%",
+            start: "top 50%",
             toggleActions: "play none none reverse",
             onEnter: () => {
               gsap.fromTo(tagline.current, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 1, ease: "power2.out" });
@@ -156,7 +156,7 @@ const Page = () => {
             <div className="flex items-baseline gap-2 px-20 text-2xl md:text-4xl font-bold">
               <span className="text-4xl md:text-5xl">Jaguar</span>
               <span>-</span>
-              <span ref={jaguarTaglineRef}>"Unleash the <span className="opacity-60">Art</span> of Performance"</span>
+              <span ref={jaguarTaglineRef}>Unleash the <span className="opacity-60">Art</span> of Performance</span>
             </div>
             <div className="h-full w-full flex justify-center" ref={jaguarCarouselRef}>
               {jaguarSlides.length > 0 && <Carousel slides={jaguarSlides} />}
@@ -169,7 +169,7 @@ const Page = () => {
             <div className="flex items-baseline gap-2 px-20 text-2xl md:text-4xl font-bold">
               <span className="text-4xl md:text-5xl">BMW</span>
               <span>-</span>
-              <span ref={bmwTaglineRef}>"Sheer <span className="opacity-60">Driving</span> Pleasure"</span>
+              <span ref={bmwTaglineRef}>Sheer <span className="opacity-60">Driving</span> Pleasure</span>
             </div>
             <div className="h-full w-full flex items-center justify-center" ref={bmwCarouselRef}>
               {bmwSlides.length > 0 && <Carousel slides={bmwSlides} />}
@@ -182,7 +182,7 @@ const Page = () => {
             <div className="flex items-baseline gap-2 px-20 text-2xl md:text-4xl font-bold">
               <span className="text-4xl md:text-5xl">Mercedes-Benz</span>
               <span>-</span>
-              <span ref={mercedesTaglineRef}>"The <span className="opacity-60">Best or Nothing</span>"</span>
+              <span ref={mercedesTaglineRef}>The <span className="opacity-60">Best or Nothing</span></span>
             </div>
             <div className="h-full w-full flex items-center justify-center" ref={mercedesCarouselRef}>
               {mercedesSlides.length > 0 && <Carousel slides={mercedesSlides} />}
